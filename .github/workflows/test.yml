@@ -6,17 +6,26 @@ on:
       - develop
 
 jobs:
-  release_pull_request:
+  # release_pull_request:
+  #   runs-on: ubuntu-latest
+  #   name: release_pull_request
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v1
+  #     - name: create-release-pr
+  #       uses: grassedge/git-pr-release-action@v1.0
+  #       with:
+  #         base: production
+  #         head: pre-production
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         labels: a,b,c
+  #         assign: true  
+  gitPrRelease:
+    name: git-pr-release
     runs-on: ubuntu-latest
-    name: release_pull_request
     steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: create-release-pr
-        uses: grassedge/git-pr-release-action@v1.0
-        with:
-          base: master
-          head: develop
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: a,b,c
-          assign: true
+      - uses: actions/checkout@master
+      - name: git-pr-release
+        uses: bakunyo/git-pr-release-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
