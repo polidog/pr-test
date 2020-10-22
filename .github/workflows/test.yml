@@ -17,6 +17,6 @@ jobs:
         with:
           base: production
           head: pre-production
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PR_TOKEN }}
           labels: a,b,c
           assign: true
