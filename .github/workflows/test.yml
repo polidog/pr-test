@@ -15,8 +15,8 @@ jobs:
       - name: create-release-pr
         uses: grassedge/git-pr-release-action@v1.0
         with:
-          base: production
-          head: pre-production
+          base: master
+          head: develop
           token: ${{ secrets.PR_TOKEN }}
           labels: a,b,c
           assign: true
