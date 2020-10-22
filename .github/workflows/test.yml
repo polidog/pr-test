@@ -28,4 +28,5 @@ jobs:
       - name: git-pr-release
         uses: bakunyo/git-pr-release-action@master
         env:
+          GIT_PR_RELEASE_BRANCH_STAGING: develop
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
